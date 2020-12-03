@@ -1,0 +1,124 @@
+<template>
+    <el-container>
+        <el-col :span="1"/>
+        <el-col :span="10">
+            <el-form ref="form" :model="form" :label-position="left" label-width="80px">
+                <el-form-item label="加班人员">
+                    <el-input v-model="form.name"></el-input>
+                </el-form-item>
+                <el-form-item label="开始时间" >
+                    <el-date-picker type="datetime" placeholder="选择日期" v-model="form.startTime"
+                                    style="width: 100%;" format="yyyy-MM-dd HH:mm"></el-date-picker>
+                </el-form-item>
+
+                <el-form-item label="结束时间" >
+                    <el-date-picker type="datetime" placeholder="选择日期" v-model="form.endTime"
+                                    style="width: 100%;"  format="yyyy-MM-dd HH:mm"></el-date-picker>
+                </el-form-item>
+                <el-form-item label="加班属性">
+                    <el-select v-model="form.type" placeholder="请选择"  style="width: 100%;" >
+                        <el-option label="工作日" value="工作日"></el-option>
+                        <el-option label="公休日" value="公休日"></el-option>
+                        <el-option label="法定节假日" value="法定节假日"></el-option>
+                    </el-select>
+                </el-form-item>
+                <el-form-item label="申请事由">
+                    <el-input v-model="form.forWhat"></el-input>
+                </el-form-item>
+                <el-form-item label="加班项目">
+                    <el-input v-model="form.project"></el-input>
+                </el-form-item>
+                <el-form-item label="工作事项">
+                    <el-input type="textarea" v-model="form.arrange"></el-input>
+                </el-form-item>
+                <el-form-item label="输出结果">
+                    <el-input type="textarea" v-model="form.result"></el-input>
+                </el-form-item>
+                <el-form-item label="达标要求">
+                    <el-input type="textarea" v-model="form.standard"></el-input>
+                </el-form-item>
+                <el-form-item label="交付时间">
+                    <el-date-picker type="date" placeholder="选择日期" v-model="form.deliveryDate"
+                                    style="width: 100%;" format="yyyy-MM-dd"></el-date-picker>
+                </el-form-item>
+            </el-form>
+        </el-col>
+        <el-col :span="2"/>
+        <el-col :span="8">
+            <el-input
+                    type="textarea"
+                    :rows="30"
+                    placeholder="请输入内容"
+                    :readonly="true"
+                    v-model="result"
+            >
+            </el-input>
+
+        </el-col>
+
+    </el-container>
+</template>
+
+<script>
+    export default {
+        name: "Main",
+        data() {
+            return {
+                form: {
+                    name: '',
+                    startTime: '',
+                    endTime: '',
+                    type: '',
+                    forWhat: '',
+                    project: '',
+                    arrange: '',
+                    result: '',
+                    standard: '',
+                    deliveryDate: ''
+                },
+                resultStr:
+                    '计划加班开始时间：{startTime}\n' +
+                    '计划加班结束时间：{endTime}\n' +
+                    '加班日属性：{type}\n' +
+                    '申请事由：{forWhat}\n' +
+                    '加班项目：{project}\n' +
+                    '具体安排的工作事项：{arrange}\n' +
+                    '输出结果：{result}\n' +
+                    '达标要求：{standard}\n' +
+                    '交付时间：{deliveryDate}\n' +
+                    '加班人姓名：{name}'
+            }
+        },
+
+        computed: {
+            result() {
+                const form = this.form
+                console.log()
+                return this.resultStr
+                    .replace("{name}",form.name)
+                    .replace("{startTime}", this.dateFormat(form.startTime))
+                    .replace("{endTime}", this.dateFormat(form.endTime))
+                    .replace("{type}", form.type)
+                    .replace("{forWhat}", form.forWhat)
+                    .replace("{project}", form.project)
+                    .replace("{arrange}", form.arrange)
+                    .replace("{result}", form.result)
+                    .replace("{standard}", form.standard)
+                    .replace("{deliveryDate}", this.dateFormat2(form.deliveryDate))
+            }
+        },
+
+        methods: {
+            dateFormat(obj) {
+                return obj ? this.$moment(obj).format("YYYY-MM-DD HH:mm") : obj;
+            },
+            dateFormat2(obj) {
+                return obj ? this.$moment(obj).format("YYYY-MM-DD") : obj;
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
