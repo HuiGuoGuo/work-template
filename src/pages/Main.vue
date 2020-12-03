@@ -92,9 +92,9 @@
                     '计划加班开始时间：{startTime}\n' +
                     '计划加班结束时间：{endTime}\n' +
                     '加班日属性：{type}\n' +
-                    '申请事由：{forWhat} 时间非常紧迫需加班。\n' +
+                    '申请事由：{forWhat},时间非常紧迫需加班。\n' +
                     '加班项目：{project}\n' +
-                    '具体安排的工作事项：{arrange};\n' +
+                    '具体安排的工作事项：{arrange}。\n' +
                     '输出结果：{result}。\n' +
                     '达标要求：{standard}。\n' +
                     '交付时间：{deliveryDate}\n' +
