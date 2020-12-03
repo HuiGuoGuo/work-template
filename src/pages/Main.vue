@@ -6,17 +6,17 @@
                 <el-form-item label="加班人员">
                     <el-input v-model="form.name"></el-input>
                 </el-form-item>
-                <el-form-item label="开始时间" >
+                <el-form-item label="开始时间">
                     <el-date-picker type="datetime" placeholder="选择日期" v-model="form.startTime"
                                     style="width: 100%;" format="yyyy-MM-dd HH:mm"></el-date-picker>
                 </el-form-item>
 
-                <el-form-item label="结束时间" >
+                <el-form-item label="结束时间">
                     <el-date-picker type="datetime" placeholder="选择日期" v-model="form.endTime"
-                                    style="width: 100%;"  format="yyyy-MM-dd HH:mm"></el-date-picker>
+                                    style="width: 100%;" format="yyyy-MM-dd HH:mm"></el-date-picker>
                 </el-form-item>
                 <el-form-item label="加班属性">
-                    <el-select v-model="form.type" placeholder="请选择"  style="width: 100%;" >
+                    <el-select v-model="form.type" placeholder="请选择" style="width: 100%;">
                         <el-option label="工作日" value="工作日"></el-option>
                         <el-option label="公休日" value="公休日"></el-option>
                         <el-option label="法定节假日" value="法定节假日"></el-option>
@@ -77,14 +77,26 @@
                     deliveryDate: ''
                 },
                 resultStr:
+                    '示例: \n\n' +
+                    '计划加班开始时间：9月19日08:31\n' +
+                    '计划加班结束时间：9月19日18:39\n' +
+                    '加班日属性：公休日\n' +
+                    '申请事由：项目紧急上线，时间非常紧迫需加班。\n' +
+                    '加班项目：xxx-project、xxx-project\n' +
+                    '具体安排的工作事项：开发新XXX1接口、XXX2接口、XXX3接口；\n' +
+                    '输出结果：XXX1接口、XXX2接口、XXX3接口已开发完成。\n' +
+                    '达标要求：完成XXX1接口、XXX2接口、XXX3接口的开发。\n' +
+                    '交付时间：9月19日\n' +
+                    '加班人姓名：XXX \n\n' +
+                    '----------------------我是分隔线---------------------\n\n' +
                     '计划加班开始时间：{startTime}\n' +
                     '计划加班结束时间：{endTime}\n' +
                     '加班日属性：{type}\n' +
-                    '申请事由：{forWhat}\n' +
+                    '申请事由：{forWhat} 时间非常紧迫需加班。\n' +
                     '加班项目：{project}\n' +
-                    '具体安排的工作事项：{arrange}\n' +
-                    '输出结果：{result}\n' +
-                    '达标要求：{standard}\n' +
+                    '具体安排的工作事项：{arrange};\n' +
+                    '输出结果：{result}。\n' +
+                    '达标要求：{standard}。\n' +
                     '交付时间：{deliveryDate}\n' +
                     '加班人姓名：{name}'
             }
@@ -95,7 +107,7 @@
                 const form = this.form
                 console.log()
                 return this.resultStr
-                    .replace("{name}",form.name)
+                    .replace("{name}", form.name)
                     .replace("{startTime}", this.dateFormat(form.startTime))
                     .replace("{endTime}", this.dateFormat(form.endTime))
                     .replace("{type}", form.type)
