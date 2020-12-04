@@ -17,9 +17,9 @@ export default new Router({
                     component: require('@/pages/Main').default
                 },
                 {
-                    name: 'template',
-                    path: 'template',
-                    component: require('@/pages/Template').default
+                    name: 'weekly',
+                    path: 'weekly',
+                    component: require('@/pages/Weekly').default
                 }
             ]
         }

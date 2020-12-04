@@ -5,7 +5,7 @@
                 <template slot="title"><i class="el-icon-data-analysis  "></i>数据管理</template>
                 <el-menu-item-group>
                     <el-menu-item index="1-1" route="/index">加班数据</el-menu-item>
-                    <el-menu-item index="1-2" route="/template">工作周报</el-menu-item>
+                    <el-menu-item index="1-2" route="/weekly">工作周报</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
         </el-menu>
