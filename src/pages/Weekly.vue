@@ -271,10 +271,6 @@
                         label: '预计上线',
                         value: '预计上线'
                     },
-                    {
-                        label: '预计上线',
-                        value: '预计上线'
-                    },
                 ],
                 form: {
                     currWeeks: [{
