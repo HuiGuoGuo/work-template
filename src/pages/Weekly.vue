@@ -26,7 +26,7 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item>
-                            <el-select v-model="curr.percent" placeholder="完成度" style="width: 100%;">
+                            <el-select v-model="curr.percent" clearable placeholder="完成度" style="width: 100%;">
                                 <el-option
                                         v-for="item in percents"
                                         :key="item.value"
@@ -39,7 +39,7 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item>
-                            <el-select v-model="curr.behavior" placeholder="行为" style="width: 100%;">
+                            <el-select v-model="curr.behavior" clearable placeholder="行为" style="width: 100%;">
                                 <el-option
                                         v-for="item in behaviors"
                                         :key="item.value"
@@ -66,7 +66,7 @@
                 <el-form-item v-for="(curr,index) in form.nextWeeks" :label="'下周工作 ' + (index+1)" :key="curr.key">
                     <el-col :span="4">
                         <el-form-item>
-                            <el-select v-model="curr.project" placeholder="请选择" style="width: 100%;">
+                            <el-select v-model="curr.project" clearable placeholder="请选择" style="width: 100%;">
                                 <el-option
                                         v-for="item in projects"
                                         :key="item.value"
@@ -84,7 +84,7 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item>
-                            <el-select v-model="curr.percent" placeholder="完成度" style="width: 100%;">
+                            <el-select v-model="curr.percent" clearable placeholder="完成度" style="width: 100%;">
                                 <el-option
                                         v-for="item in percents"
                                         :key="item.value"
