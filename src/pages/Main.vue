@@ -6,6 +6,12 @@
                 <el-form-item label="加班人员">
                     <el-input v-model="form.name"></el-input>
                 </el-form-item>
+                <el-form-item label="是否晚餐">
+                    <el-select v-model="form.dinner" placeholder="请选择" style="width: 100%;">
+                        <el-option label="是" value="是"></el-option>
+                        <el-option label="否" value="否"></el-option>
+                    </el-select>
+                </el-form-item>
                 <el-form-item label="开始时间">
                     <el-date-picker type="datetime" placeholder="选择日期" v-model="form.startTime"
                                     style="width: 100%;" format="yyyy-MM-dd HH:mm"></el-date-picker>
@@ -74,10 +80,13 @@
                     arrange: '',
                     result: '',
                     standard: '',
-                    deliveryDate: ''
+                    deliveryDate: '',
+                    dinner: ''
                 },
                 resultStr:
                     '示例: \n\n' +
+                    '加班人姓名：XXX \n\n' +
+                    '是否晚餐: 否 \n' +
                     '计划加班开始时间：9月19日08:31\n' +
                     '计划加班结束时间：9月19日18:39\n' +
                     '加班日属性：公休日\n' +
@@ -87,8 +96,9 @@
                     '输出结果：XXX1接口、XXX2接口、XXX3接口已开发完成。\n' +
                     '达标要求：完成XXX1接口、XXX2接口、XXX3接口的开发。\n' +
                     '交付时间：9月19日\n' +
-                    '加班人姓名：XXX \n\n' +
                     '----------------------我是分隔线---------------------\n\n' +
+                    '加班人姓名：{name}\n' +
+                    '是否晚餐: {dinner} \n' +
                     '计划加班开始时间：{startTime}\n' +
                     '计划加班结束时间：{endTime}\n' +
                     '加班日属性：{type}\n' +
@@ -97,8 +107,7 @@
                     '具体安排的工作事项：{arrange}。\n' +
                     '输出结果：{result}。\n' +
                     '达标要求：{standard}。\n' +
-                    '交付时间：{deliveryDate}\n' +
-                    '加班人姓名：{name}'
+                    '交付时间：{deliveryDate}\n'
             }
         },
 
@@ -108,6 +117,7 @@
                 console.log()
                 return this.resultStr
                     .replace("{name}", form.name)
+                    .replace("{dinner}", form.dinner)
                     .replace("{startTime}", this.dateFormat(form.startTime))
                     .replace("{endTime}", this.dateFormat(form.endTime))
                     .replace("{type}", form.type)
