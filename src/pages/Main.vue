@@ -53,7 +53,7 @@
         <el-col :span="8">
             <el-input
                     type="textarea"
-                    :rows="30"
+                    :rows="33"
                     placeholder="请输入内容"
                     :readonly="true"
                     v-model="result"
@@ -96,7 +96,7 @@
                     '输出结果：XXX1接口、XXX2接口、XXX3接口已开发完成。\n' +
                     '达标要求：完成XXX1接口、XXX2接口、XXX3接口的开发。\n' +
                     '交付时间：9月19日\n' +
-                    '----------------------我是分隔线---------------------\n\n' +
+                    '\n\n' +
                     '加班人姓名：{name}\n' +
                     '是否晚餐: {dinner} \n' +
                     '计划加班开始时间：{startTime}\n' +

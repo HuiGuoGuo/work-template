@@ -61,7 +61,7 @@
                                    @click="removeWeekly(curr,form.currWeeks)"></el-button>
                     </el-col>
                 </el-form-item>
-                <el-divider></el-divider>
+                <el-divider/>
 
                 <el-form-item v-for="(curr,index) in form.nextWeeks" :label="'下周工作 ' + (index+1)" :key="curr.key">
                     <el-col :span="4">
@@ -97,7 +97,7 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item>
-                            <el-select v-model="curr.behavior" clearable    placeholder="请选择" style="width: 100%;">
+                            <el-select v-model="curr.behavior" clearable placeholder="请选择" style="width: 100%;">
                                 <el-option
                                         v-for="item in behaviors"
                                         :key="item.value"
@@ -131,7 +131,6 @@
                     v-model="result"
             >
             </el-input>
-
         </el-col>
     </el-container>
 </template>
@@ -214,10 +213,11 @@
                         value: '知识产权'
                     }
                 ],
-                percents: [{
+                percents: [
+                    {
                     label: '10%',
                     value: '10%'
-                },
+                    },
                     {
                         label: '20%',
                         value: '20%'
@@ -296,7 +296,7 @@
                     '1、XXX-project：新增XXX接口,提测时间：11-25;\n' +
                     '下周工作安排：\n' +
                     '1、XXX-project：XXX接口开发,预计提测时间：12-04;\n\n' +
-                    '-----------------我是分隔线----------------\n\n' +
+                    '\n\n' +
                     '本周工作安排：\n' +
                     '{currWeek}' +
                     '下周工作安排：\n' +
@@ -322,7 +322,7 @@
                 })
                 return this.resultStr
                     .replace("{currWeek}", currWeek)
-                    .replace("{nextWeek}", nextWeek)
+                    .replace("{nextWeek}", nextWeek);
             }
         },
 
@@ -335,9 +335,9 @@
             },
             appendStr(obj, index, length) {
                 if (length == 1 || length > (index + 1)) {
-                    return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek ) : ''}${obj.percent ? (',完成'+ obj.percent): ''}${obj.behavior ? (',' + obj.behavior ) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}; \n`;
+                    return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek) : ''}${obj.percent ? (',完成' + obj.percent) : ''}${obj.behavior ? (',' + obj.behavior) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}; \n`;
                 }
-                return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek ) : ''}${obj.percent ? (',完成'+ obj.percent): ''}${obj.behavior ? (',' + obj.behavior ) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}。 \n`;
+                return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek) : ''}${obj.percent ? (',完成' + obj.percent) : ''}${obj.behavior ? (',' + obj.behavior) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}。 \n`;
             },
             addWeekly(obj) {
                 obj.push({
