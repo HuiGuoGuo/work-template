@@ -26,19 +26,6 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item>
-                            <el-select v-model="curr.percent" clearable placeholder="完成度" style="width: 100%;">
-                                <el-option
-                                        v-for="item in percents"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value"
-                                        :disabled="item.disabled">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="3">
-                        <el-form-item>
                             <el-select v-model="curr.behavior" clearable placeholder="行为" style="width: 100%;">
                                 <el-option
                                         v-for="item in behaviors"
@@ -54,6 +41,19 @@
                         <el-form-item>
                             <el-date-picker type="date" placeholder="日期" v-model="curr.behaviorDate"
                                             style="width: 100%;" format="MM-dd"></el-date-picker>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="3">
+                        <el-form-item>
+                            <el-select v-model="curr.percent" clearable placeholder="占比" style="width: 100%;">
+                                <el-option
+                                        v-for="item in percents"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"
+                                        :disabled="item.disabled">
+                                </el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="1">
@@ -84,20 +84,7 @@
                     </el-col>
                     <el-col :span="3">
                         <el-form-item>
-                            <el-select v-model="curr.percent" clearable placeholder="完成度" style="width: 100%;">
-                                <el-option
-                                        v-for="item in percents"
-                                        :key="item.value"
-                                        :label="item.label"
-                                        :value="item.value"
-                                        :disabled="item.disabled">
-                                </el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="3">
-                        <el-form-item>
-                            <el-select v-model="curr.behavior" clearable placeholder="请选择" style="width: 100%;">
+                            <el-select v-model="curr.behavior" clearable placeholder="行为" style="width: 100%;">
                                 <el-option
                                         v-for="item in behaviors"
                                         :key="item.value"
@@ -114,10 +101,24 @@
                                             style="width: 100%;" format="MM-dd"></el-date-picker>
                         </el-form-item>
                     </el-col>
+                    <el-col :span="3">
+                        <el-form-item>
+                            <el-select v-model="curr.percent" clearable placeholder="占比" style="width: 100%;">
+                                <el-option
+                                        v-for="item in percents"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"
+                                        :disabled="item.disabled">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
                     <el-col :span="1">
                         <el-button type="danger" icon="el-icon-delete"
                                    @click="removeWeekly(curr,form.nextWeeks)"></el-button>
                     </el-col>
+
                 </el-form-item>
             </el-form>
         </el-col>
@@ -335,9 +336,9 @@
             },
             appendStr(obj, index, length) {
                 if (length == 1 || length > (index + 1)) {
-                    return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek) : ''}${obj.percent ? (',完成' + obj.percent) : ''}${obj.behavior ? (',' + obj.behavior) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}; \n`;
+                    return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek) : ''}${obj.behavior ? (',' + obj.behavior) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}${obj.percent ? (',' + obj.percent) : ''}; \n`;
                 }
-                return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek) : ''}${obj.percent ? (',完成' + obj.percent) : ''}${obj.behavior ? (',' + obj.behavior) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}。 \n`;
+                return `${(index + 1)}、${obj.project ? (obj.project + ':') : ''}${obj.currWeek ? (obj.currWeek) : ''}${obj.behavior ? (',' + obj.behavior) : ''}${obj.behaviorDate ? ('时间: ' + this.dateFormat(obj.behaviorDate)) : ''}${obj.percent ? (',' + obj.percent) : ''}。 \n`;
             },
             addWeekly(obj) {
                 obj.push({
